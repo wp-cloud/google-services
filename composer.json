@@ -1,0 +1,36 @@
+{
+  "name": "wpstore/google-services",
+  "description": "@todo",
+  "version": "0.0.1",
+  "type": "wordpress-plugin",
+  "keywords": ["google,api,connect"],
+  "homepage": "https://www.wpstore.io/plugins/google-services/",
+  "license": "GPL-2.0+",
+  "authors": [
+    {
+      "name" : "WPStore.io",
+      "email" : "code@wpstore.io",
+      "homepage" : "https://www.wpstore.io"
+    }
+  ],
+  "support": {
+    "email": "support@example.org",
+    "issues": "https://github.com/WPStore/google-services/issues",
+    "source": "https://github.com/WPStore/google-services",
+    "wiki": "https://github.com/WPStore/google-services/wiki"
+  },
+  "require": {},
+  "require-dev": {},
+  "conflict": {},
+  "provide": {},
+  "suggest": {},
+  "autoload": {},
+  "autoload-dev": {},
+  "prefer-stable": true,
+  "config": {},
+  "scripts": {},
+  "bin": {},
+  "archive": {
+      "exclude": []
+  }
+}

@@ -1,0 +1,2 @@
+	</div><!-- #poststuff -->
+</div><!-- .wrap -->

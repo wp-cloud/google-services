@@ -1,0 +1,68 @@
+.page,
+.settings-page {
+  /* .header-right */ }
+  .page .page-header,
+  .settings-page .page-header {
+    height: 43px; }
+    .page .page-header h2,
+    .settings-page .page-header h2 {
+      margin-right: 250px; }
+    .page .page-header .header-right,
+    .settings-page .page-header .header-right {
+      display: inline-block;
+      float: right;
+      font-size: 12px;
+      margin-top: 3px;
+      padding: 2px 0 0; }
+      .page .page-header .header-right span.signed-in > div,
+      .settings-page .page-header .header-right span.signed-in > div {
+        direction: rtl;
+        max-width: 150px;
+        padding-top: 2px; }
+      .page .page-header .header-right span.signed-in .avatar,
+      .settings-page .page-header .header-right span.signed-in .avatar {
+        border-radius: 20px;
+        height: 40px;
+        width: 40px; }
+      .page .page-header .header-right img,
+      .settings-page .page-header .header-right img {
+        border: 1px solid #acacac;
+        border-radius: 2px;
+        margin-left: 8px;
+        vertical-align: middle; }
+      .page .page-header .header-right .notice, .page .page-header .header-right div.updated, .page .page-header .header-right div.error,
+      .settings-page .page-header .header-right .notice,
+      .settings-page .page-header .header-right div.updated,
+      .settings-page .page-header .header-right div.error {
+        clear: both; }
+    .page .page-header .signed-in > div,
+    .settings-page .page-header .signed-in > div {
+      float: left; }
+    .page .page-header .signed-in a,
+    .settings-page .page-header .signed-in a {
+      text-decoration: none;
+      color: #808080;
+      display: block;
+      line-height: 140%;
+      text-align: right; }
+      .page .page-header .signed-in a:hover,
+      .settings-page .page-header .signed-in a:hover {
+        text-decoration: underline; }
+
+/* .page */
+.settings-page h2.nav-tab-wrapper {
+  padding-bottom: 0 !important;
+  margin-top: 0 !important; }
+
+section.google-service {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  padding: 10px; }
+  section.google-service div.icon {
+    float: left;
+    margin-right: 10px;
+    height: 96px;
+    width: 96px; }
+  section.google-service h4 {
+    font-size: 2em;
+    margin-top: 5px; }

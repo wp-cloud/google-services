@@ -1,0 +1,70 @@
+
+.page,
+.settings-page {
+
+	.page-header {
+		height: 43px;
+
+		h2 {
+			margin-right: 250px;
+		}
+
+		.header-right {
+			display: inline-block;
+			float: right;
+			font-size: 12px;
+			margin-top: 3px;
+			padding: 2px 0 0;
+
+			span.signed-in > div {
+				direction: rtl;
+				max-width: 150px;
+				padding-top: 2px;
+			}
+
+			span.signed-in .avatar {
+				border-radius: 20px;
+				height: 40px;
+				width: 40px;
+			}
+
+			img {
+				border: 1px solid #acacac;
+				border-radius: 2px;
+				margin-left: 8px;
+				vertical-align: middle;
+			}
+			.notice, div.updated, div.error {
+				clear: both;
+			}
+		}
+
+		.signed-in > div {
+			float: left;
+		}
+
+		.signed-in a {
+			text-decoration: none;
+			color: #808080;
+			display: block;
+			line-height: 140%;
+			text-align: right;
+
+			&:visited {}
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	} /* .header-right */
+
+} /* .page */
+
+.settings-page {
+
+	h2.nav-tab-wrapper {
+		padding-bottom: 0 !important;
+		margin-top: 0 !important;
+	}
+
+}

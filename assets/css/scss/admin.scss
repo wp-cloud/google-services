@@ -1,0 +1,21 @@
+@import "_settings-api.scss";
+#google-services-services {
+}
+
+section.google-service {
+	background: #fff;
+    border: 1px solid #e5e5e5;
+    padding: 10px;
+
+	& div.icon {
+		float: left;
+		margin-right: 10px;
+		height: 96px;
+		width: 96px;
+	}
+
+	& h4 {
+		font-size: 2em;
+		margin-top: 5px;
+	}
+}

@@ -1,11 +1,53 @@
-# Google Services
-> Provides the [google-api-php-client](https://github.com/google/google-api-php-client) library to a WordPress installation
+# Google Services #
+**Contributors:** wpstoreio, cfoellmann  
+**Donate link:** http://wpstore.io  
+**Tags:** google, api, connect  
+**Requires at least:** 3.8  
+**Tested up to:** 4.2  
+**Stable tag:** 1.0  
+**License:** GPLv2 or later  
+**License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
-Google Services 1.0 - [google-api-php-client](https://github.com/google/google-api-php-client) TBD
+@todo
 
-## Development
+## Description ##
 
-## Changelog
-* __@todo__
+@todo
 
-* __1.0__ (2015-mm-dd)
+## Installation ##
+
+@todo
+This section describes how to install the plugin and get it working.
+
+e.g.
+
+1. Upload `plugin-name.php` to the `/wp-content/plugins/` directory
+1. Activate the plugin through the 'Plugins' menu in WordPress
+1. Place `<?php do_action('plugin_name_hook'); ?>` in your templates
+
+## Frequently Asked Questions ##
+
+### FAQ 1 ###
+
+FAQ #1 @todo
+
+### FAQ 2 ###
+
+FAQ #2 @todo
+
+## Screenshots ##
+
+### 1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from ###
+![This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from](http://s.wordpress.org/extend/plugins/google-services/screenshot-1.png)
+
+the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets 
+directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png` 
+(or jpg, jpeg, gif).
+### 2. This is the second screen shot ###
+![This is the second screen shot](http://s.wordpress.org/extend/plugins/google-services/screenshot-2.png)
+
+
+## Changelog ##
+
+### 1.0 (2015-mm-dd) ###
+* @todo

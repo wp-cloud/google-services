@@ -1,0 +1,28 @@
+{
+  "name": "wp-google-services",
+  "description": "@todo",
+  "private": true,
+  "license": "GPL-2.0+",
+  "authors": [
+    { "name": "WP-Store.io", "email": "code@wpstore.io"," homepage": "https://www.wp-store.io" }
+  ],
+  "repository" : {
+    "type" : "git",
+    "url" : ""
+  },
+  "main": "",
+  "ignore": [
+    ".dev",
+    ".gitattributes",
+    ".gitignore",
+    "bower.json",
+    "Gruntfile.js",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "google-api-php-client": "https://github.com/google/google-api-php-client.git#master"
+  },
+  "devDependencies": {}
+}
