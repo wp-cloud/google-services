@@ -29,7 +29,6 @@
   "prefer-stable": true,
   "config": {},
   "scripts": {},
-  "bin": {},
   "archive": {
       "exclude": []
   }
