@@ -27,7 +27,10 @@
   "autoload": {},
   "autoload-dev": {},
   "prefer-stable": true,
-  "config": {},
+  "config": {
+    "vendor-dir": "libs",
+    "autoloader-suffix": "GoogleServices"
+  },
   "scripts": {},
   "archive": {
       "exclude": []
