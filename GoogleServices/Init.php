@@ -9,7 +9,7 @@
 namespace WPStore\GoogleServices;
 
 /**
- * @todo DESC
+ * @todo desc
  *
  * @since 0.0.1
  */
@@ -17,4 +17,4 @@ class Init {
 
 	
 
-} // END class GoogleServices
+} // END class Init

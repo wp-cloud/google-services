@@ -4,13 +4,13 @@
  * @copyright Copyright (c) 2015, WPStore.io
  * @license   http://www.gnu.org/licenses/gpl-2.0.html GPL-2.0+
  * @package   WPStore\GoogleServices
- * @version   0.0.1
+ * @version   0.0.2-dev
  */
 /*
 Plugin Name: Google Services
 Plugin URI:  http://wpstore.io/plugins/wp-google-services/
 Description: @todo
-Version:     0.0.1
+Version:     0.0.2-dev
 Author:      WPStore.io
 Author URI:  http://wpstore.io
 License:     GPLv2 or later
@@ -44,11 +44,14 @@ Network:     True
 class GoogleServices {
 
 	/**
+	 * @since 0.0.1
+	 */
+	const SDK_VERSION = 'master';
+
+	/**
 	 * @todo DESC
 	 *
 	 * @since 0.0.1
-	 * 
-	 * @return void
 	 */
 	public static function init() {
 
@@ -62,63 +65,74 @@ class GoogleServices {
 			new \WPStore\GoogleServices\Admin( __FILE__ );
 		}
 
-//		register_activation_hook( __FILE__, array( '\\WPStore\\GoogleServices', 'activation' ) );
-
 	} // END init()
 
 	/**
 	 * @todo DESC
 	 *
 	 * @since 0.0.1
-	 *
-	 * @return void
 	 */
 	private static function require_files() {
 
 		$path = dirname( __FILE__ );
 
-		require_once $path . '/libs/Google/autoload.php';
-		require_once $path . '/../AdminSDK/SettingsAPI.php';
-		require_once $path . '/../AdminSDK/PageAPI.php';
-		require_once $path . '/GoogleServices/Admin.php';
-		require_once $path . '/GoogleServices/Network.php';
-		require_once $path . '/GoogleServices/Services.php';
-		require_once $path . '/GoogleServices/Init.php';
-
+		require_once $path . '/libs/autoload.php';
+		
 	} // END require_files()
 
-	public function get_defaults() {
+	/**
+	 * @todo desc
+	 * 
+	 * @since  0.0.1
+	 * @return array
+	 */
+	public static function get_defaults() {
 
-		$defaults = array();
+		$defaults = array(
+			'setting' => '',
+		);
 
 		return apply_filters( 'google_services_defaults', $defaults );
 
 	} // END get_defaults()
-
+	
 	/**
 	 * @todo DESC
-	 * 
-	 * @since 0.0.1
 	 *
+	 * @todo Check for PHP >= 5.3
+	 * @todo Check for PHP json: extension_loaded('json')
+	 * @todo Check WP version >= 3.8
+	 * @todo redirect to welcome/auth/plugin page
+	 *
+	 * @since  0.0.1
+	 * @param  bool $network_wide
 	 * @return void
 	 */
-	public static function activation() {
+	public static function activation( $network_wide ) {
+		
+		require dirname( __FILE__ ) . '/activation.php';
+		
+		$activation = new GoogleServices_Activation( $network_wide );
 
-		/**
-		 * Check for PHP >= 5.3
-		 *
-		 * Check for PHP json:
-		 *   extension_loaded('json')
-		 *
-		 * Check WP version
-		 */
+		$activation->check_wp( '3.8' );
+		$activation->check_php( '5.3' );
+		$activation->recommend_php();
+		$activation->check_php_extension( array( 'json' ) );
+		// $activation->check_php_curl( array( 'version' => '7.35.0', 'ssl_version' => 'OpenSSL/1.0.1f' ) );
+
+		$activation->run();
 
 	} // END activation()
 
-}
+} // END class GoogleServices
+
+/** (De-)Activation */
+register_activation_hook( __FILE__, array( 'GoogleServices', 'activation' ) );
+// register_deactivation_hook( __FILE__, array( 'GoogleServices', 'activation' ) );
 
 /**
  * @todo 'plugins_loaded' vs 'init'? Priority < '10'?
  * @todo compat check?
  */
+/** Start the plugin */
 add_action( 'plugins_loaded', array( 'GoogleServices', 'init' ) );

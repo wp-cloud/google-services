@@ -25,11 +25,14 @@
   "provide": {},
   "suggest": {},
   "autoload": {
+    "files": ["libs/Google/autoload.php"],
     "psr-4": {
         "WPStore\\GoogleServices\\": "GoogleServices/"
     }
   },
-  "autoload-dev": {},
+  "autoload-dev": {
+    "files": ["../AdminSDK/PageAPI.php", "../AdminSDK/SettingsAPI.php"]
+  },
   "prefer-stable": true,
   "config": {
     "vendor-dir": "libs",

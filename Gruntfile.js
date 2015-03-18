@@ -6,6 +6,10 @@ module.exports = function (grunt) {
 
 		pkg: grunt.file.readJSON('package.json'),
 
+		// @todo .scss -> .css + .min.css
+		// @todo checktextdomains
+		// @todo makepot/pot
+
 		bowercopy: {
 			options: {
 				// Bower components folder will be removed afterwards

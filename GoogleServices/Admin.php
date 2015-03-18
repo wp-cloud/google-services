@@ -15,16 +15,14 @@ namespace WPStore\GoogleServices;
  */
 class Admin {
 
-	public $settings;
+	public $settings, $plugin_file;
 
-	private $capability, $plugin_file;
+	private $capability;
 
 	/**
 	 * Constructor. Hooks all interactions to initialize the class.
 	 *
 	 * @since 0.0.1
-	 *
-	 * @return void
 	 */
 	public function __construct( $plugin_file ) {
 
@@ -38,7 +36,7 @@ class Admin {
 			'sidebar' => true,
 		);
 		
-		$this->settings = new \SettingsAPI( $args );
+		$this->settings = new Settings( $args );
 
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 
@@ -47,8 +45,7 @@ class Admin {
 		add_action( 'admin_menu', array( $this, 'admin_menu_settings' ), 99 );
 
 		add_action( 'admin_head', array( $this, 'css' ) );
-		add_action( 'ga_sidebar_services', array( $this, 'ga_sidebar_services' ) );
-
+		
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 
 	} // END __construct()
@@ -62,11 +59,17 @@ class Admin {
         $this->settings->register_settings();
     }
 
-	function css() {
+	/**
+	 * @todo desc
+	 *
+	 * @since  0.0.1
+	 * @return string HTML output
+	 */
+	public function css() {
 ?>
 <style type="text/css">#toplevel_page_google-services img {height: 16px;}</style>
 <?php
-	}
+	} // END css()
 
 	public function enqueue_scripts( $hook ) {
 
@@ -76,14 +79,6 @@ class Admin {
 		wp_register_style( 'google-services-admin', plugins_url( "/assets/css/admin{$min}.css", $this->plugin_file ), array(), $version );
 		wp_enqueue_style( 'google-services-admin' );
 
-	}
-
-	public function ga_services() {
-		$this->get_view('services');
-	}
-
-	public function ga_sidebar_services() {
-		$this->get_view('sidebar_services');
 	}
 
 	public function admin_menu() {
@@ -141,34 +136,12 @@ class Admin {
 
 	} // END
 
-	function get_page( $view, $args = array() ) {
+	function get_view( $view ) {
 
-		extract( $args );
-
-		include 'views/_header.php';
-//		include "views/{$view}.php";
-		?>
-		<div id="post-body" class="metabox-holder columns-<?php echo has_action("ga_sidebar_{$view}") ? '2' : '1'; ?>">
-			<div id="post-body-content" style="position: relative;">
-				<?php
-				include "{$view}.php";
-//				do_action( "ga_{$view}" ); ?>
-			</div><!-- #post-body-content -->
-			<div id="postbox-container-1" class="postbox-container">
-				<?php do_action( "ga_sidebar_{$view}" ); ?>
-			</div><!-- #postbox-container-1 .postbox-container -->
-		</div>
-		<?php
-		include 'views/_footer.php';
-
+		$path = dirname( $this->plugin_file );
+		include_once $path . "/GoogleServices/views/{$view}.php";
+		
 	}
-
-	static function get_view( $view ) {
-		include "views/{$view}.php";
-	}
-
-
-
 
 	public function get_tabs() {
 
@@ -270,4 +243,4 @@ class Admin {
 
 	}
 
-} // END class
+} // END class Admin
