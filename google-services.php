@@ -41,7 +41,7 @@ Network:     True
  *
  * @since 0.0.1
  */
-class GoogleServices_Loader {
+class GoogleServices {
 
 	/**
 	 * @todo DESC
@@ -54,7 +54,13 @@ class GoogleServices_Loader {
 
 		self::require_files();
 
-		new \WPStore\GoogleServices\Admin( __FILE__ );
+		new \WPStore\GoogleServices\Init( __FILE__ );
+
+		if ( is_network_admin() ) {
+			new \WPStore\GoogleServices\Network( __FILE__ );
+		} else {
+			new \WPStore\GoogleServices\Admin( __FILE__ );
+		}
 
 //		register_activation_hook( __FILE__, array( '\\WPStore\\GoogleServices', 'activation' ) );
 
@@ -72,11 +78,22 @@ class GoogleServices_Loader {
 		$path = dirname( __FILE__ );
 
 		require_once $path . '/libs/Google/autoload.php';
-		require_once $path . '/SettingsAPI.php';
+		require_once $path . '/../AdminSDK/SettingsAPI.php';
+		require_once $path . '/../AdminSDK/PageAPI.php';
 		require_once $path . '/GoogleServices/Admin.php';
+		require_once $path . '/GoogleServices/Network.php';
 		require_once $path . '/GoogleServices/Services.php';
+		require_once $path . '/GoogleServices/Init.php';
 
 	} // END require_files()
+
+	public function get_defaults() {
+
+		$defaults = array();
+
+		return apply_filters( 'google_services_defaults', $defaults );
+
+	} // END get_defaults()
 
 	/**
 	 * @todo DESC
@@ -104,4 +121,4 @@ class GoogleServices_Loader {
  * @todo 'plugins_loaded' vs 'init'? Priority < '10'?
  * @todo compat check?
  */
-add_action( 'plugins_loaded', array( 'GoogleServices_Loader', 'init' ) );
+add_action( 'plugins_loaded', array( 'GoogleServices', 'init' ) );

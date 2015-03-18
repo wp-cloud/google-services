@@ -13,7 +13,7 @@ namespace WPStore\GoogleServices;
  *
  * @since 0.0.1
  */
-class Admin {
+class Network extends Admin {
 
 	public $settings;
 
@@ -29,7 +29,7 @@ class Admin {
 	public function __construct( $plugin_file ) {
 
 		$this->plugin_file = $plugin_file;
-		$this->capability  = 'manage_options'; // @todo filter
+		$this->capability  = 'manage_network_options'; // split into info/settings
 
 		$args = array(
 			'id'      => 'google-services',
@@ -42,9 +42,8 @@ class Admin {
 
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 
-		// Check if per-site is allowed
-		add_action( 'admin_menu', array( $this, 'admin_menu'          ), 9  );
-		add_action( 'admin_menu', array( $this, 'admin_menu_settings' ), 99 );
+		add_action( 'network_admin_menu', array( $this, 'admin_menu'          ), 9  );
+		add_action( 'network_admin_menu', array( $this, 'admin_menu_settings' ), 99 );
 
 		add_action( 'admin_head', array( $this, 'css' ) );
 		add_action( 'ga_sidebar_services', array( $this, 'ga_sidebar_services' ) );
