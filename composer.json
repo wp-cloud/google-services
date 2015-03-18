@@ -24,7 +24,11 @@
   "conflict": {},
   "provide": {},
   "suggest": {},
-  "autoload": {},
+  "autoload": {
+    "psr-4": {
+        "WPStore\\GoogleServices\\": "GoogleServices/"
+    }
+  },
   "autoload-dev": {},
   "prefer-stable": true,
   "config": {
