@@ -111,7 +111,7 @@ class GoogleServices {
 	public static function activation( $network_wide ) {
 		
 		require dirname( __FILE__ ) . '/activation.php';
-		
+
 		$activation = new GoogleServices_Activation( $network_wide );
 
 		$activation->check_wp( '3.8' );
@@ -122,7 +122,15 @@ class GoogleServices {
 
 		$activation->run();
 
+		add_action( 'activated_plugin', array( 'GoogleServices', 'welcome_redirect' ) );
+
 	} // END activation()
+
+	public static function welcome_redirect( $plugin ) {
+		if ( $plugin == plugin_basename( __FILE__ ) ) { // $this->plugin_file
+			exit( wp_redirect( self_admin_url( 'admin.php?page=google-services' ) ) );
+		}
+	}
 
 } // END class GoogleServices
 

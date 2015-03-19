@@ -29,16 +29,20 @@ class GoogleServices_Activation {
 	 */
 	private $notices;
 
+	private $plugin_file;
+
 	/**
 	 * @todo desc
 	 *
 	 * @since 0.0.1
+	 * @param string $plugin_file
 	 * @param bool $network_wide
-	 * @param string $redirect
 	 */
-	public function __construct( $network_wide, $redirect = false ) {
-		// 
-	}
+	public function __construct( $plugin_file, $network_wide ) {
+
+		$this->plugin_file = $plugin_file;
+
+	} // END __construct()
 
 	/**
 	 * @todo sec
@@ -49,17 +53,16 @@ class GoogleServices_Activation {
 
 		// wp_die( $this->warnings ); // wp_die() Alternative?
 
+		$msg_warning = '';
+		$msg_notice  = '';
+
 		if ( $this->warnings ) {
-			$msg_warning = '';
-			
 			foreach ( $this->warnings as $warning ) {
 				$msg_warning .= $warning;
 			}
 		}
 
 		if ( $this->notices ) {
-			$msg_notice = '';
-
 			foreach ( $this->notices as $notice ) {
 				$msg_notice .= $notice;
 			}
@@ -74,7 +77,6 @@ class GoogleServices_Activation {
 			// save notice(s) to db (transient?)
 			// display notice(s)
 		}
-
 
 	} // END run()
 

@@ -1,7 +1,6 @@
 {
   "name": "wpstore/google-services",
   "description": "@todo",
-  "version": "0.0.1",
   "type": "wordpress-plugin",
   "keywords": ["google,api,connect"],
   "homepage": "https://www.wpstore.io/plugins/google-services/",
@@ -30,9 +29,7 @@
         "WPStore\\GoogleServices\\": "GoogleServices/"
     }
   },
-  "autoload-dev": {
-    "files": ["../AdminSDK/PageAPI.php", "../AdminSDK/SettingsAPI.php"]
-  },
+  "autoload-dev": {},
   "prefer-stable": true,
   "config": {
     "vendor-dir": "libs",

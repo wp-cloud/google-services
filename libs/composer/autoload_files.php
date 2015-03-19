@@ -7,6 +7,4 @@ $baseDir = dirname($vendorDir);
 
 return array(
     $vendorDir . '/Google/autoload.php',
-    $baseDir . '/../AdminSDK/PageAPI.php',
-    $baseDir . '/../AdminSDK/SettingsAPI.php',
 );
