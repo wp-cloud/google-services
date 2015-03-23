@@ -17,16 +17,16 @@ class Services extends \PageAPI {
 
 	/**
 	 * @todo desc
-	 * 
+	 *
 	 * @since 0.0.1
 	 */
-	public function body() {
+	public function content() {
 		$this->display_services( self::get_services() );
 	}
 
 	/**
 	 * @todo desc
-	 * 
+	 *
 	 * @since 0.0.1
 	 * @param array $services
 	 */
@@ -38,7 +38,7 @@ class Services extends \PageAPI {
 
 	/**
 	 * @todo desc
-	 * 
+	 *
 	 * @since  0.0.1
 	 * @param  string $id
 	 * @param  array $details
@@ -56,18 +56,18 @@ class Services extends \PageAPI {
 
 	/**
 	 * @todo desc
-	 * 
+	 *
 	 * @since  0.0.1
 	 * @return array
 	 */
 	public static function get_services() {
-		
+
 		/**
 		 * '+' => array(),
 		 * 'google-apps' => array(),
 		 * 'youtube' => array(),
 		 */
-		
+
 		$services = array(
 			'analytics'       => array(
 				'name' => 'Google Analytics',
@@ -88,7 +88,7 @@ class Services extends \PageAPI {
 //				'impl' => array(),
 //			),
 		);
-		
+
 		return apply_filters( 'google_services', $services );
 
 	} // END get_services()

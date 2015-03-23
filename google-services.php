@@ -44,9 +44,14 @@ Network:     True
 class GoogleServices {
 
 	/**
+	 * @todo desc
+	 *
+	 * @todo set properly
+	 * @todo update when grunt-bowercopy runs
+	 * 
 	 * @since 0.0.1
 	 */
-	const SDK_VERSION = 'master';
+	const SDK_VERSION = '1.1.2';
 
 	/**
 	 * @todo DESC
@@ -77,12 +82,12 @@ class GoogleServices {
 		$path = dirname( __FILE__ );
 
 		require_once $path . '/libs/autoload.php';
-		
+
 	} // END require_files()
 
 	/**
 	 * @todo desc
-	 * 
+	 *
 	 * @since  0.0.1
 	 * @return array
 	 */
@@ -95,7 +100,7 @@ class GoogleServices {
 		return apply_filters( 'google_services_defaults', $defaults );
 
 	} // END get_defaults()
-	
+
 	/**
 	 * @todo DESC
 	 *
@@ -109,7 +114,7 @@ class GoogleServices {
 	 * @return void
 	 */
 	public static function activation( $network_wide ) {
-		
+
 		require dirname( __FILE__ ) . '/activation.php';
 
 		$activation = new GoogleServices_Activation( $network_wide );

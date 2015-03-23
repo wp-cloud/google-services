@@ -1,17 +1,11 @@
 
-.page,
-.settings-page {
+.page {
 
 	.page-header {
 		height: 43px;
 
-		h2 {
-			margin-right: 250px;
-		}
-
 		.header-right {
 			display: inline-block;
-			float: right;
 			font-size: 12px;
 			margin-top: 3px;
 			padding: 2px 0 0;
@@ -58,13 +52,19 @@
 		}
 	} /* .header-right */
 
-} /* .page */
-
-.settings-page {
-
 	h2.nav-tab-wrapper {
 		padding-bottom: 0 !important;
 		margin-top: 0 !important;
 	}
+
+	h3.hndle {
+		cursor: default !important;
+	}
+
+} /* .page */
+
+.settings-page {
+
+	
 
 }

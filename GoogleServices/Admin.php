@@ -15,7 +15,7 @@ namespace WPStore\GoogleServices;
  */
 class Admin {
 
-	public $settings, $plugin_file;
+	public $plugin_file;
 
 	private $capability;
 
@@ -29,35 +29,15 @@ class Admin {
 		$this->plugin_file = $plugin_file;
 		$this->capability  = 'manage_options'; // @todo filter
 
-		$args = array(
-			'id'      => 'google-services',
-			'title'   => __( 'Settings' ),
-			'tabbed'  => true,
-			'sidebar' => true,
-		);
-		
-		$this->settings = new Settings( $args );
-
-		add_action( 'admin_init', array( $this, 'admin_init' ) );
-
-		// Check if per-site is allowed
-		add_action( 'admin_menu', array( $this, 'admin_menu'          ), 9  );
-		add_action( 'admin_menu', array( $this, 'admin_menu_settings' ), 99 );
+		$this->menus();
 
 		add_action( 'admin_head', array( $this, 'css' ) );
-		
+
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 
+		add_action( 'page_footer', array( $this, 'page_footer' ), 9 );
+
 	} // END __construct()
-
-	public function admin_init() {
-
-		$this->settings->set_tabs( $this->get_tabs() );
-		$this->settings->set_sections( $this->get_sections() );
-		$this->settings->set_fields( $this->get_fields() );
-
-        $this->settings->register_settings();
-    }
 
 	/**
 	 * @todo desc
@@ -73,13 +53,28 @@ class Admin {
 
 	public function enqueue_scripts( $hook ) {
 
-		$version = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? time() : $this->plugin_version;
-		$min     = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? ''     : '.min';
+		$admin_pages = apply_filters( 'google_analyticator_scripts', array( '@todo' ) );
 
-		wp_register_style( 'google-services-admin', plugins_url( "/assets/css/admin{$min}.css", $this->plugin_file ), array(), $version );
-		wp_enqueue_style( 'google-services-admin' );
+		if ( true ) { // in_array( $hook, $admin_pages )
 
-	}
+			$version = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? time() : $this->plugin_version;
+			$min     = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? ''     : '.min';
+
+			wp_register_style( 'google-services-admin', plugins_url( "/assets/css/admin{$min}.css", $this->plugin_file ), array(), $version );
+			wp_enqueue_style( 'google-services-admin' );
+
+		}
+
+	} // END enqueue_scripts()
+
+	protected function menus() {
+
+		$network = is_network_admin() ? 'network_' : '';
+
+		add_action( "{$network}admin_menu", array( $this, 'admin_menu'          ), 9  );
+		add_action( "{$network}admin_menu", array( $this, 'admin_menu_settings' ), 99 );
+
+	} // END menus()
 
 	public function admin_menu() {
 
@@ -132,25 +127,27 @@ class Admin {
 
 	public function page_settings() {
 
-		$this->settings->display();
+		$settings = new Settings();
+		$settings->display();
 
 	} // END
+
+	public function page_footer( $page ) {
+
+		if ( in_array( $page, array( 'google-services', 'google-services-services' ) ) ) {
+			$v    = \GoogleServices::SDK_VERSION;
+			$link = "<a href='https://github.com/google/google-api-php-client/releases/tag/{$v}' target='_blank'>v{$v}</a>";
+			?>
+	<p style="border-top:1px solid lightgray;padding-top:10px;color:grey;text-align:right;">Google APIs Client Library - <?php echo $link; ?></p>
+		<?php
+		}
+
+	}
 
 	function get_view( $view ) {
 
 		$path = dirname( $this->plugin_file );
 		include_once $path . "/GoogleServices/views/{$view}.php";
-		
-	}
-
-	public function get_tabs() {
-
-		$tabs = array(
-			'general'  => __( 'General', 'google-services' ),
-			'advanced' => __( 'Advanced', 'google-services' ),
-		);
-
-		return $tabs;
 
 	}
 

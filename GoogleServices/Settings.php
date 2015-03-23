@@ -15,4 +15,26 @@ namespace WPStore\GoogleServices;
  */
 class Settings extends \SettingsAPI {
 
+	/**
+	 * @todo desc
+	 *
+	 * @since  0.0.1
+	 * @param  array $instance_args
+	 */
+	public function __construct() {
+
+		$args = array(
+			'id'      => 'google-services',
+			'title'   => __( 'Settings' ),
+			'sidebar' => true,
+			'tabs'    => array(
+				'general'  => __( 'General', 'google-services' ),
+				'advanced' => __( 'Advanced', 'google-services' ),
+			),
+		);
+
+		parent::__construct( $args );
+
+	} // END __construct()
+
 } // END class Settings
